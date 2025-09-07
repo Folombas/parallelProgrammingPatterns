@@ -14,6 +14,14 @@ func main() {
 		close(ch)
 	}()
 
+	go func() {
+		ch <- 2
+		ch <- 4
+		ch <- 6
+		ch <- 8
+		close(ch)
+	}()
+
 	for v := range ch {
 		fmt.Println(v)
 	}
