@@ -28,6 +28,11 @@ func main() {
 		ch <- 8
 	}()
 
+	go func() {
+		wg.Wait()
+		close(ch)
+	}()
+
 	for v := range ch {
 		fmt.Println(v)
 	}
